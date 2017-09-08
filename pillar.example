@@ -1,0 +1,16 @@
+ssmtp:
+  root: example@domain.tld
+  mailHub: mail.google.com
+  rewriteDomain: routedlogic.net
+  UseTLS: True
+  UseSTARTTLS: True
+  UseTLSCert: False
+  AuthUser: example@domain.tld
+  AuthPass: ygrkokqpmrreykbj
+  AuthMethod: PLAIN
+  FromLineOverride: True
+  alias:
+    root: example@domain.tld
+  revalias:
+    root: example@domain.tld
+    nobody: example@domain.tld
