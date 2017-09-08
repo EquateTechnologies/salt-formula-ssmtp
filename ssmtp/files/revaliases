@@ -1,0 +1,14 @@
+# /etc/ssmtp/revaliases
+#
+# WARNING: This file is managed to Salt Stack. Changes made to this file we be
+# reverted on next highstate run. Fix the state if there is a problem.
+#
+
+{%- for name, alias in salt['pillar.get']('ssmtp:revalias', {}).items() %}
+{%- if name != '' and alias != '' %}
+{{ name }}: {{ alias }}
+{%- endif %}
+{%- endfor %}
+
+# EOF
+
