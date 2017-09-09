@@ -1,7 +1,10 @@
 {% set ssmtp_map = salt['grains.filter_by']({
-  'config': {
-    'Root': 'postmaster',
-    'MailHub': 'mail',
+  'default': {
+    'config': {
+      'Root': 'postmaster',
+      'MailHub': 'mail',
+    },
+    'revaliases': {},
   },
 },
 merge=salt['pillar.get']('ssmtp:lookup', {}),

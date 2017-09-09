@@ -13,7 +13,7 @@ ssmtp:
     - require:
       - pkg: ssmtp
     - context:
-      ssmtp: {{ ssmtp_map }}
+      ssmtp_config: {{ ssmtp_map.config }}
 
 /etc/ssmtp/revaliases:
   file.managed:
@@ -25,7 +25,7 @@ ssmtp:
     - require:
       - pkg: ssmtp
     - context:
-      ssmtp: {{ ssmtp_map }}
+      ssmtp_revaliases: {{ ssmtp_map.revaliases }}
 
 /etc/ssmtp/tls:
   file.directory:

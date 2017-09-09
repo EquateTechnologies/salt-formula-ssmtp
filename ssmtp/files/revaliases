@@ -4,7 +4,7 @@
 # reverted on next highstate run. Fix the state if there is a problem.
 #
 
-{% for name, value in ssmtp.revaliases %}
+{% for name, value in ssmtp_revaliases %}
 {{ name }}={{ value }}
 {% endfor %}
 
