@@ -4,5 +4,5 @@
     'MailHub': 'mail',
   },
 },
-merge=salt['pillar.get']('ssmtp:lookup'), {}),
+merge=salt['pillar.get']('ssmtp:lookup', {}),
 default='default') %}
