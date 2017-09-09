@@ -1,16 +1,20 @@
+{# SSMTP mail delivery config #}
 ssmtp:
-  root: example@domain.tld
-  mailHub: mail.google.com
-  rewriteDomain: routedlogic.net
-  UseTLS: True
-  UseSTARTTLS: True
-  UseTLSCert: False
-  AuthUser: example@domain.tld
-  AuthPass: ygrkokqpmrreykbj
-  AuthMethod: PLAIN
-  FromLineOverride: True
-  alias:
-    root: example@domain.tld
-  revalias:
-    root: example@domain.tld
-    nobody: example@domain.tld
+  lookup:
+    config:
+      Root: user@example.tld
+      MailHub: mail.example.tld
+      RewriteDomain: example.tld
+      UseTLS: YES
+      TLS_CA_File: /etc/pki/tls/certs/ca-bundle.crt
+      TLS_CA_Dir: /etc/ssmtp/tls/ca
+      TLSCert: /etc/ssmtp/tls/client.crt
+      TLSKey: /etc/ssmtp/tls/client.key
+      UseSTARTTLS: YES
+      UseTLSCert: NO
+      AuthUser: user@example.tld
+      AuthPass: pass
+      AuthMethod: PLAIN
+      FromLineOverride: YES
+    revaliases:
+      root: user@example.tld

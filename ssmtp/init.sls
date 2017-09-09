@@ -1,3 +1,5 @@
+{% from "ssmtp/map.jinja" import ssmtp_map with context %}
+
 ssmtp:
   pkg.installed:
     - name: ssmtp
@@ -10,21 +12,11 @@ ssmtp:
     - source: salt://ssmtp/files/ssmtp.conf
     - require:
       - pkg: ssmtp
-
-/etc/aliases:
-  file.managed:
-    - name: /etc/aliases
-    - user: root
-    - group: mail
-    - mode: 644
-    - template: jinja
-    - source: salt://ssmtp/files/aliases
-    - require:
-      - pkg: ssmtp
+    - context:
+      ssmtp: {{ ssmtp_map }}
 
 /etc/ssmtp/revaliases:
   file.managed:
-    - name: /etc/ssmtp/revaliases
     - user: root
     - group: mail
     - mode: 644
@@ -32,10 +24,11 @@ ssmtp:
     - source: salt://ssmtp/files/revaliases
     - require:
       - pkg: ssmtp
+    - context:
+      ssmtp: {{ ssmtp_map }}
 
 /etc/ssmtp/tls:
   file.directory:
-    - name: /etc/ssmtp/tls
     - makedirs: True
     - user: root
     - group: mail

@@ -4,11 +4,8 @@
 # reverted on next highstate run. Fix the state if there is a problem.
 #
 
-{%- for name, alias in salt['pillar.get']('ssmtp:revalias', {}).items() %}
-{%- if name != '' and alias != '' %}
-{{ name }}: {{ alias }}
-{%- endif %}
-{%- endfor %}
+{% for name, value in ssmtp.revaliases %}
+{{ name }}={{ value }}
+{% endfor %}
 
 # EOF
-
