@@ -5,7 +5,7 @@
 #
 
 {%- for name, value in ssmtp_revaliases.items() %}
-{{ name }}={{ value }}
+{{ name }}:{{ value }}
 {%- endfor %}
 
 # EOF
